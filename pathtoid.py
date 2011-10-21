@@ -26,7 +26,7 @@ class PathToId:
   def __init__(self):
     self.cache = {sepsep:0, sep:0}
     self.itemscache = {}
-    self.api = None 
+    self.api = None
 
   def encode_key(self, s):
     return _utf8(s)
@@ -50,7 +50,7 @@ class PathToId:
       return False
 
   def load_items(self, path=sep, parent_id=0):
-    
+
     try:
       if self.get_items_cache(parent_id):
         items = self.get_items_cache(parent_id)
@@ -60,7 +60,7 @@ class PathToId:
         self.itemscache[parent_id] = items
     except: #     raise PutioError("You have no items to show.") for empty folders ? wtf.
       items = []
-      
+
     for i in items:
       key = self.encode_key(_utf8(path) + sep + _utf8(i.name) )
       self.cache[key] = i.id

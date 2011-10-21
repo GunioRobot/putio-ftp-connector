@@ -36,7 +36,7 @@ class HttpFD(object):
         self.buffer = ''
         self.req = None
         self.fd = None
-        
+
         # gets total size
         req = urllib2.Request(self.download_url)
         f = urllib2.urlopen(req)
@@ -74,8 +74,8 @@ class HttpFD(object):
 
     def seek(self, frombytes, **kwargs):
         self.seekpos = frombytes
-        return 
-        
+        return
+
 
 # ....
 idfinder = PathToId()
@@ -127,7 +127,7 @@ class HttpFS(ftpserver.AbstractedFS):
         apifile.create_folder(name=dirs[1])
       self.remove_from_cache(path)
       self.remove_from_cache(dirs[0])
-      
+
 
     def listdir(self, path):
         ret = []
@@ -146,14 +146,14 @@ class HttpFS(ftpserver.AbstractedFS):
 
         for i in items:
           ret.append(i.name)
-          
+
         return ret
 
     def remove_from_cache(self, path):
       if path in self.dirlistcache:
         del self.dirlistcache[path]
       idfinder.invalidate_items_cache_by_path(path)
-      
+
 
     def rmdir(self, path):
       apifile = self._getitem(path)
@@ -183,7 +183,7 @@ class HttpFS(ftpserver.AbstractedFS):
         if dsts[0] == os.path.sep:
           apifile.move_item(target=0)
           return
-          
+
         destination = self._getitem(dsts[0]);
         if not destination:
           raise OSError(2, 'No such file or directory')
@@ -247,7 +247,7 @@ class HttpFS(ftpserver.AbstractedFS):
             print "file id:", id
             apifile = operations.api.get_items(id=id)[0]
             self.dirlistcache[filename] = apifile
-            
+
         return apifile #.get_download_url()
 
 
@@ -274,7 +274,7 @@ class HttpFS(ftpserver.AbstractedFS):
           item = self._getitem(path)
         except:
           return self.format_list_items([])
-        
+
         if not item:
           items = operations.api.get_items()
         else:
@@ -342,12 +342,12 @@ class HttpOperations(object):
         config.apisecret = password
         config.apikey    = username
         self.api = putio.Api(config.apikey,config.apisecret)
-        
+
         print "checking user & passwd"
         username = self.api.get_user_name()
         if not username:
             return False
-        
+
         print "> welcome ", username
         return True
 
@@ -395,7 +395,7 @@ def main():
       ftp_handler = ftpserver.FTPHandler
       ftp_handler.authorizer = HttpAuthorizer()
       ftp_handler.abstracted_fs = HttpFS
-      
+
 #      ftp_handler.passive_ports = range(60000, 65535)
 #      try:
 #          ftp_handler.masquerade_address = gethostbyname(options.bind_address)

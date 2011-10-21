@@ -2,23 +2,23 @@ this is a proof of concept ftp server that proxies ftp clients requests to putio
 
 its alpha, and works for me. for screenshots or some more details i wrote a blog post http://ybrs.in/2011/01/27/putio-ftp-connector/
 
-uses pyftpdlib, code is modified from https://github.com/tomatohater/faetus/blob/master/bin/faetus-server . 
+uses pyftpdlib, code is modified from https://github.com/tomatohater/faetus/blob/master/bin/faetus-server .
 
 
 
 
 installation:
 
- for *nix users: 
+ for *nix users:
    i. install python 2.6.6 (haven't tested in other versions)
-  ii. just download everything in a folder, and run 
+  ii. just download everything in a folder, and run
      python putio-ftp-connector.py
 
  iii. from your favorite ftp client login to localhost port 2121 with your putio apikey as your username and apisecret as your password.
-	 
+
  for windows users:
 
-   i. install python 2.6.6 ( http://www.python.org/download/releases/2.6.6/ ) - i don't know if other versions will work or not. 
+   i. install python 2.6.6 ( http://www.python.org/download/releases/2.6.6/ ) - i don't know if other versions will work or not.
   ii. download everything to one folder. double click putio-ftp-connector.py . (when you run connector it will say something like Serving FTP on 192.168.1.225:2121, 192.168.1.255 is your local ip address)
       if you see an ipv6 kind adress or can't see an ip address when it starts edit config.py  and enter your ipadress there.
 
@@ -34,9 +34,9 @@ whats new:
   - removed some unnecessary dependencies, some garbage output.
   - added rename, create dir, move, delete operations.
 
-todos:  
+todos:
   - no file uploads - putio api doesn't have an upload method yet.
   - tons of debug output.
-    
 
- 
+
+
